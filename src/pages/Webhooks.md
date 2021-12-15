@@ -2,7 +2,6 @@
 
 Flatchr dispose de plusieurs webhooks pouvant être configurés afin de communiquer avec des applications tierces lors du déclenchement de certains évènements.
 
-## Liste des Webhooks disponibles
 ### Candidat
 <details>
   <summary> Nouveau candidat </summary>
