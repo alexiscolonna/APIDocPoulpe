@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Flatchr Docs',
+  title: 'Tech @ Flatchr',
   tagline: 'flatchr.io | Logiciel de recrutement',
   url: 'https://www.flatchr.io/',
   baseUrl: '/',

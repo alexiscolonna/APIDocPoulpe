@@ -39,7 +39,7 @@ Flatchr dispose de plusieurs webhooks pouvant être configurés afin de communiq
 
 ### Membres
 <details>
-  <summary> Ajoutr d'un membre </summary>
+  <summary> Ajout d'un membre </summary>
     This is the detailed content
 </details>
 
