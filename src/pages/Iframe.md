@@ -19,10 +19,13 @@ Il vous suffit de remplacer `[slug]` par votre référence unique d'entreprise.
 ```html title="Code de l'iframe"
 <iframe 
 src="https://careers.flatchr.io/company/[slug]?iframe=true" 
-width=100% height=100% frameborder=0 marginwidth=0 marginheight=0>
+width="100%" height="600px" frameborder="0" marginwidth="0" marginheight="0">
 </iframe>
 ```
 <br/>
+:::info
+Pour plus d'informations sur les iframe vous pouvez vous référer à [cette documentation](https://www.w3schools.com/html/html_iframe.asp)
+:::
 
 ### Personalisation
 
@@ -88,10 +91,11 @@ Il vous suffit de remplacer `[slug]` par votre référence unique d'entreprise.
 ```html title="Code de l'iframe"
 <iframe 
 src="https://careers.flatchr.io/intranet/[slug]?iframe=true" 
-width=100% height=100% frameborder=0 marginwidth=0 marginheight=0>
+width="100%" height="600px" frameborder="0" marginwidth="0" marginheight="0">
 </iframe>
 ```
 <br/>
+
 
 ### Personalisation
 
