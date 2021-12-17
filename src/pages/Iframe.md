@@ -29,7 +29,7 @@ Pour plus d'informations sur les iframe vous pouvez vous référer à [cette doc
 
 <br/>
 
-### Personalisation
+### Personalisation {#arguments-iframe}
 
 L'iframe peut être personnalisé grâce à plusieurs arguments : 
 <table>
@@ -107,5 +107,5 @@ Pour plus d'informations sur les iframe vous pouvez vous référer à [cette doc
 ### Personalisation
 
 :::note
-L'iframe peut être personnalisé avec les mêmes arguments que pour le site internet.
+L'iframe peut être personnalisé avec les mêmes [arguments](#arguments-iframe) que pour le site internet.
 :::
