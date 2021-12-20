@@ -38,13 +38,17 @@ const config = {
           customCss: require.resolve('./src/css/custom.css'),
         },
       }),
-        'redocusaurus',
-        {
-          specs: [{
-            specUrl: 'https://redocly.github.io/redoc/openapi.yaml',
-          }],
-        }
+        
       
+    ],
+
+    [
+      'redocusaurus',
+      {
+        specs: [{
+          specUrl: 'https://redocly.github.io/redoc/openapi.yaml',
+        }],
+      }
     ],
    
   ],
