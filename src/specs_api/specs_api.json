@@ -1,0 +1,2947 @@
+{
+  "swagger": "2.0",
+  "host": "staging.flatchr.io",
+  "basePath": "/",
+  "schemes": [
+      "https"
+  ],
+  "info": {
+      "title": "Flatchr API Documentation",
+      "version": "3.0.2",
+      "description": "This is a sample example of API documentation.",
+      "termsOfService": "https://flatchr.io/cgu",
+      "contact": {
+          "name": "Flatchr Team",
+          "email": "support@flatchr.io"
+      }
+  },
+  "tags": [],
+  "paths": {
+      "/vacancy/{vacancy}": {
+          "get": {
+              "summary": "Public",
+              "operationId": "getVacancyVacancy",
+              "description": "Get public information",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "name": "vacancy",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "name": "fields",
+                      "in": "query"
+                  },
+                  {
+                      "type": "boolean",
+                      "name": "similarity",
+                      "in": "query"
+                  }
+              ],
+              "tags": [
+                  "vacancies"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/tasks": {
+          "get": {
+              "summary": "Collection",
+              "operationId": "getCompanyCompanyTasks",
+              "description": "Get all tasks from a member",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "user",
+                      "in": "path"
+                  },
+                  {
+                      "type": "string",
+                      "name": "fields",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "format": "date",
+                      "name": "date",
+                      "in": "query"
+                  },
+                  {
+                      "type": "number",
+                      "name": "delay",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "name": "token",
+                      "in": "query"
+                  }
+              ],
+              "tags": [
+                  "tasks"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/calendars": {
+          "get": {
+              "summary": "Collection",
+              "operationId": "getCompanyCompanyCalendars",
+              "description": "Get all calendars from a member",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "name": "token",
+                      "in": "query"
+                  }
+              ],
+              "tags": [
+                  "members"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/duplicates": {
+          "get": {
+              "summary": "Duplicates",
+              "operationId": "getCompanyCompanyDuplicates",
+              "description": "Get all duplicates from a company",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "name": "fields",
+                      "in": "query"
+                  }
+              ],
+              "tags": [
+                  "duplicate"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/search/applicants": {
+          "get": {
+              "summary": "Search",
+              "operationId": "getCompanyCompanySearchApplicants",
+              "description": "Search all applicants from a company",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "default": "search",
+                      "enum": [
+                          "check",
+                          "list",
+                          "search",
+                          "task",
+                          "stats"
+                      ],
+                      "name": "operation",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "name": "term",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "x-alternatives": [
+                          {
+                              "type": "string"
+                          },
+                          {
+                              "type": "array",
+                              "items": {
+                                  "type": "string"
+                              },
+                              "collectionFormat": "multi",
+                              "name": "firstname"
+                          }
+                      ],
+                      "name": "firstname",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "x-alternatives": [
+                          {
+                              "type": "string"
+                          },
+                          {
+                              "type": "array",
+                              "items": {
+                                  "type": "string"
+                              },
+                              "collectionFormat": "multi",
+                              "name": "lastname"
+                          }
+                      ],
+                      "name": "lastname",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "minLength": 5,
+                      "maxLength": 255,
+                      "x-format": {
+                          "email": true
+                      },
+                      "x-alternatives": [
+                          {
+                              "type": "string",
+                              "minLength": 5,
+                              "maxLength": 255,
+                              "x-format": {
+                                  "email": true
+                              }
+                          },
+                          {
+                              "type": "array",
+                              "items": {
+                                  "type": "string",
+                                  "minLength": 5,
+                                  "maxLength": 255,
+                                  "x-format": {
+                                      "email": true
+                                  }
+                              },
+                              "collectionFormat": "multi",
+                              "name": "email"
+                          }
+                      ],
+                      "name": "email",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "x-alternatives": [
+                          {
+                              "type": "string"
+                          },
+                          {
+                              "type": "array",
+                              "items": {
+                                  "type": "string"
+                              },
+                              "collectionFormat": "multi",
+                              "name": "phone"
+                          }
+                      ],
+                      "name": "phone",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "x-alternatives": [
+                          {
+                              "type": "string",
+                              "x-constraint": {
+                                  "length": 16
+                              },
+                              "x-format": {
+                                  "alphanum": true
+                              }
+                          },
+                          {
+                              "type": "array",
+                              "items": {
+                                  "type": "string",
+                                  "x-constraint": {
+                                      "length": 16
+                                  },
+                                  "x-format": {
+                                      "alphanum": true
+                                  }
+                              },
+                              "collectionFormat": "multi",
+                              "name": "applicant"
+                          }
+                      ],
+                      "name": "applicant",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "x-alternatives": [
+                          {
+                              "type": "string",
+                              "x-constraint": {
+                                  "length": 16
+                              },
+                              "x-format": {
+                                  "alphanum": true
+                              }
+                          },
+                          {
+                              "type": "array",
+                              "items": {
+                                  "type": "string",
+                                  "x-constraint": {
+                                      "length": 16
+                                  },
+                                  "x-format": {
+                                      "alphanum": true
+                                  }
+                              },
+                              "collectionFormat": "multi",
+                              "name": "vacancy"
+                          }
+                      ],
+                      "name": "vacancy",
+                      "in": "query"
+                  },
+                  {
+                      "type": "number",
+                      "x-alternatives": [
+                          {
+                              "type": "number"
+                          },
+                          {
+                              "type": "array",
+                              "items": {
+                                  "type": "number"
+                              },
+                              "collectionFormat": "multi",
+                              "name": "vacancy_id"
+                          }
+                      ],
+                      "name": "vacancy_id",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "x-alternatives": [
+                          {
+                              "type": "string"
+                          },
+                          {
+                              "type": "array",
+                              "items": {
+                                  "type": "string"
+                              },
+                              "collectionFormat": "multi",
+                              "name": "column"
+                          }
+                      ],
+                      "name": "column",
+                      "in": "query"
+                  },
+                  {
+                      "type": "number",
+                      "x-alternatives": [
+                          {
+                              "type": "number"
+                          },
+                          {
+                              "type": "array",
+                              "items": {
+                                  "type": "number"
+                              },
+                              "collectionFormat": "multi",
+                              "name": "column_id"
+                          }
+                      ],
+                      "name": "column_id",
+                      "in": "query"
+                  },
+                  {
+                      "type": "number",
+                      "x-alternatives": [
+                          {
+                              "type": "number"
+                          },
+                          {
+                              "type": "array",
+                              "items": {
+                                  "type": "number"
+                              },
+                              "collectionFormat": "multi",
+                              "name": "status"
+                          }
+                      ],
+                      "name": "status",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "x-alternatives": [
+                          {
+                              "type": "string"
+                          },
+                          {
+                              "type": "array",
+                              "items": {
+                                  "type": "string"
+                              },
+                              "collectionFormat": "multi",
+                              "name": "offerer"
+                          }
+                      ],
+                      "name": "offerer",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "x-alternatives": [
+                          {
+                              "type": "string",
+                              "x-constraint": {
+                                  "length": 16
+                              },
+                              "x-format": {
+                                  "alphanum": true
+                              }
+                          },
+                          {
+                              "type": "array",
+                              "items": {
+                                  "type": "string",
+                                  "x-constraint": {
+                                      "length": 16
+                                  },
+                                  "x-format": {
+                                      "alphanum": true
+                                  }
+                              },
+                              "collectionFormat": "multi",
+                              "name": "offerer_id"
+                          }
+                      ],
+                      "name": "offerer_id",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "x-alternatives": [
+                          {
+                              "type": "string"
+                          },
+                          {
+                              "type": "array",
+                              "items": {
+                                  "type": "string"
+                              },
+                              "collectionFormat": "multi",
+                              "name": "tag"
+                          }
+                      ],
+                      "name": "tag",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "x-alternatives": [
+                          {
+                              "type": "string"
+                          },
+                          {
+                              "type": "array",
+                              "items": {
+                                  "type": "string"
+                              },
+                              "collectionFormat": "multi",
+                              "name": "url"
+                          }
+                      ],
+                      "name": "url",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "x-alternatives": [
+                          {
+                              "type": "string"
+                          },
+                          {
+                              "type": "array",
+                              "items": {
+                                  "type": "string"
+                              },
+                              "collectionFormat": "multi",
+                              "name": "list"
+                          }
+                      ],
+                      "name": "list",
+                      "in": "query"
+                  },
+                  {
+                      "type": "number",
+                      "name": "score_min",
+                      "in": "query"
+                  },
+                  {
+                      "type": "number",
+                      "name": "score_max",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "name": "start",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "name": "end",
+                      "in": "query"
+                  },
+                  {
+                      "type": "boolean",
+                      "name": "hired",
+                      "in": "query"
+                  },
+                  {
+                      "type": "number",
+                      "name": "p",
+                      "in": "query"
+                  },
+                  {
+                      "type": "number",
+                      "maximum": 1000,
+                      "name": "limit",
+                      "in": "query"
+                  },
+                  {
+                      "type": "boolean",
+                      "name": "activeVacancies",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "name": "data",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "name": "token",
+                      "in": "query"
+                  }
+              ],
+              "tags": [
+                  "applicants"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          },
+          "post": {
+              "summary": "Search",
+              "operationId": "postCompanyCompanySearchApplicants",
+              "description": "Search all applicants from a company",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "schema": {
+                          "$ref": "#/definitions/Model 5"
+                      }
+                  }
+              ],
+              "tags": [
+                  "applicants"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/vacancy/{vacancy}": {
+          "get": {
+              "summary": "Profile",
+              "operationId": "getCompanyCompanyVacancyVacancy",
+              "description": "Get vacancy information",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "vacancy",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "name": "fields",
+                      "in": "query"
+                  }
+              ],
+              "tags": [
+                  "vacancies"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/applicant/{applicant}": {
+          "get": {
+              "summary": "Profile",
+              "operationId": "getCompanyCompanyApplicantApplicant",
+              "description": "Get applicant information",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "name": "fields",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "name": "token",
+                      "in": "query"
+                  }
+              ],
+              "tags": [
+                  "applicants"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          },
+          "put": {
+              "summary": "Update",
+              "operationId": "putCompanyCompanyApplicantApplicant",
+              "description": "Update applicant information",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "vacancy",
+                      "in": "path"
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "boolean",
+                      "name": "disable_mail",
+                      "in": "query"
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "schema": {
+                          "$ref": "#/definitions/Model 16"
+                      }
+                  }
+              ],
+              "tags": [
+                  "applicants"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/tasks/{user}": {
+          "get": {
+              "summary": "Collection",
+              "operationId": "getCompanyCompanyTasksUser",
+              "description": "Get all tasks from a member",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "user",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "name": "fields",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "format": "date",
+                      "name": "date",
+                      "in": "query"
+                  },
+                  {
+                      "type": "number",
+                      "name": "delay",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "name": "token",
+                      "in": "query"
+                  }
+              ],
+              "tags": [
+                  "tasks"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/applicant/{applicant}/comments": {
+          "get": {
+              "summary": "Collection",
+              "operationId": "getCompanyCompanyApplicantApplicantComments",
+              "description": "Get all comments from a candidate",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "name": "fields",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "name": "token",
+                      "in": "query"
+                  }
+              ],
+              "tags": [
+                  "comments"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/applicant/{applicant}/extension": {
+          "get": {
+              "summary": "Extension",
+              "operationId": "getCompanyCompanyApplicantApplicantExtension",
+              "description": "Get applicant information for extension",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "name": "fields",
+                      "in": "query"
+                  }
+              ],
+              "tags": [
+                  "applicants"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/applicant/{applicant}/medias": {
+          "get": {
+              "summary": "Collection",
+              "operationId": "getCompanyCompanyApplicantApplicantMedias",
+              "description": "Get all files from a candidate",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "name": "fields",
+                      "in": "query"
+                  }
+              ],
+              "tags": [
+                  "medias"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/applicant/{applicant}/messages": {
+          "get": {
+              "summary": "Collection",
+              "operationId": "getCompanyCompanyApplicantApplicantMessages",
+              "description": "Get all messages from a candidate",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "name": "fields",
+                      "in": "query"
+                  }
+              ],
+              "tags": [
+                  "messages"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/applicant/{applicant}/calendars": {
+          "get": {
+              "summary": "Collection",
+              "operationId": "getCompanyCompanyApplicantApplicantCalendars",
+              "description": "Get all calendars from a applicant",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  }
+              ],
+              "tags": [
+                  "traits"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/applicant/{applicant}/ratings": {
+          "get": {
+              "summary": "Collection",
+              "operationId": "getCompanyCompanyApplicantApplicantRatings",
+              "description": "Get all ratings from a candidate",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "name": "fields",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "name": "token",
+                      "in": "query"
+                  }
+              ],
+              "tags": [
+                  "traits"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/applicant/{applicant}/answer": {
+          "post": {
+              "summary": "Create",
+              "operationId": "postApplicantApplicantAnswer",
+              "description": "Create answer related to a question",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "schema": {
+                          "$ref": "#/definitions/Model 1"
+                      }
+                  }
+              ],
+              "tags": [
+                  "traits"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/task": {
+          "post": {
+              "summary": "CreateMultiUsers",
+              "operationId": "postCompanyCompanyTask",
+              "description": "Create task multi users",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "schema": {
+                          "$ref": "#/definitions/Model 2"
+                      }
+                  }
+              ],
+              "tags": [
+                  "tasks"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/vacancy/{vacancy}/candidate": {
+          "post": {
+              "summary": "Create Candidate",
+              "operationId": "postVacancyVacancyCandidate",
+              "description": "create new candidate",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "name": "vacancy",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "schema": {
+                          "$ref": "#/definitions/Model 3"
+                      }
+                  }
+              ],
+              "tags": [
+                  "applicants"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/vacancy/{vacancy}/candidate-resume": {
+          "post": {
+              "summary": "Create candidate from resume",
+              "operationId": "postVacancyVacancyCandidateresume",
+              "description": "create new candidate using parsed resume",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "name": "vacancy",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "schema": {
+                          "$ref": "#/definitions/Model 4"
+                      }
+                  }
+              ],
+              "tags": [
+                  "applicants"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/task/user/{user}": {
+          "post": {
+              "summary": "Create",
+              "operationId": "postCompanyCompanyTaskUserUser",
+              "description": "Create task",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "user",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "schema": {
+                          "$ref": "#/definitions/Model 6"
+                      }
+                  }
+              ],
+              "tags": [
+                  "tasks"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/applicant/{applicant}/trait": {
+          "post": {
+              "summary": "Create",
+              "operationId": "postCompanyCompanyApplicantApplicantTrait",
+              "description": "Create trait",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "schema": {
+                          "$ref": "#/definitions/Model 7"
+                      }
+                  }
+              ],
+              "tags": [
+                  "traits"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/applicant/{applicant}/comment": {
+          "post": {
+              "summary": "Create",
+              "operationId": "postCompanyCompanyApplicantApplicantComment",
+              "description": "Create comment about a candidate",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "schema": {
+                          "$ref": "#/definitions/Model 8"
+                      }
+                  }
+              ],
+              "tags": [
+                  "comments"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/applicant/{applicant}/resume": {
+          "post": {
+              "summary": "Create",
+              "operationId": "postCompanyCompanyApplicantApplicantResume",
+              "description": "Create resume about a candidate",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "schema": {
+                          "$ref": "#/definitions/Model 9"
+                      }
+                  }
+              ],
+              "tags": [
+                  "candidate"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/applicant/{applicant}/media": {
+          "post": {
+              "summary": "Create",
+              "operationId": "postCompanyCompanyApplicantApplicantMedia",
+              "description": "Create media about a candidate",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "schema": {
+                          "$ref": "#/definitions/Model 10"
+                      }
+                  }
+              ],
+              "tags": [
+                  "medias"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/applicant/{applicant}/comment/external": {
+          "post": {
+              "summary": "Create",
+              "operationId": "postCompanyCompanyApplicantApplicantCommentExternal",
+              "description": "Create comment about a candidate",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "schema": {
+                          "$ref": "#/definitions/Model 11"
+                      }
+                  }
+              ],
+              "tags": [
+                  "comments"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/applicant/{applicant}/comment/text": {
+          "post": {
+              "summary": "Create",
+              "operationId": "postCompanyCompanyApplicantApplicantCommentText",
+              "description": "Create comment about a candidate",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "schema": {
+                          "$ref": "#/definitions/Model 12"
+                      }
+                  }
+              ],
+              "tags": [
+                  "comments"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/applicant/{applicant}/calendars/calendly": {
+          "post": {
+              "summary": "Handle new Calendly event",
+              "operationId": "postCompanyCompanyApplicantApplicantCalendarsCalendly",
+              "description": "Handle new Calendly event",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "schema": {
+                          "$ref": "#/definitions/Model 13"
+                      }
+                  }
+              ],
+              "tags": [
+                  "members"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/task/{task}": {
+          "delete": {
+              "summary": "Delete",
+              "operationId": "deleteCompanyCompanyTaskTask",
+              "description": "Delete a task",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "task",
+                      "in": "path",
+                      "required": true
+                  }
+              ],
+              "tags": [
+                  "tasks"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          },
+          "put": {
+              "summary": "Update",
+              "operationId": "putCompanyCompanyTaskTask",
+              "description": "Update task",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "task",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "schema": {
+                          "$ref": "#/definitions/Model 15"
+                      }
+                  }
+              ],
+              "tags": [
+                  "tasks"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/applicant/{applicant}/comment/{comment}": {
+          "delete": {
+              "summary": "Delete",
+              "operationId": "deleteCompanyCompanyApplicantApplicantCommentComment",
+              "description": "Delete a comment from a candidate",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "integer",
+                      "name": "comment",
+                      "in": "path",
+                      "required": true
+                  }
+              ],
+              "tags": [
+                  "comments"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/vacancy/{vacancy}/applicant/{applicant}": {
+          "delete": {
+              "summary": "Delete",
+              "operationId": "deleteCompanyCompanyVacancyVacancyApplicantApplicant",
+              "description": "Delete applicant from vacancies",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "vacancy",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "boolean",
+                      "name": "disable_mail",
+                      "in": "query"
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "reason",
+                      "in": "query"
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "schema": {
+                          "$ref": "#/definitions/Model 14"
+                      }
+                  }
+              ],
+              "tags": [
+                  "applicants"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          },
+          "put": {
+              "summary": "Update",
+              "operationId": "putCompanyCompanyVacancyVacancyApplicantApplicant",
+              "description": "Update applicant information",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "vacancy",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "boolean",
+                      "name": "disable_mail",
+                      "in": "query"
+                  },
+                  {
+                      "in": "body",
+                      "name": "body",
+                      "schema": {
+                          "$ref": "#/definitions/Model 16"
+                      }
+                  }
+              ],
+              "tags": [
+                  "applicants"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      },
+      "/company/{company}/applicant/{applicant}/media/{media}": {
+          "delete": {
+              "summary": "Delete",
+              "operationId": "deleteCompanyCompanyApplicantApplicantMediaMedia",
+              "description": "Delete a media from a applicant",
+              "parameters": [
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "company",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "string",
+                      "x-constraint": {
+                          "length": 16
+                      },
+                      "x-format": {
+                          "alphanum": true
+                      },
+                      "name": "applicant",
+                      "in": "path",
+                      "required": true
+                  },
+                  {
+                      "type": "integer",
+                      "name": "media",
+                      "in": "path",
+                      "required": true
+                  }
+              ],
+              "tags": [
+                  "medias"
+              ],
+              "responses": {
+                  "default": {
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Successful"
+                  }
+              }
+          }
+      }
+  },
+  "definitions": {
+      "question": {
+          "type": "object"
+      },
+      "Model 1": {
+          "type": "object",
+          "properties": {
+              "value": {
+                  "type": "string",
+                  "minLength": 1
+              },
+              "type": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "/[a-zA-Z]/"
+              },
+              "question": {
+                  "$ref": "#/definitions/question"
+              }
+          },
+          "required": [
+              "value",
+              "type"
+          ]
+      },
+      "value": {
+          "type": "array",
+          "items": {
+              "type": "string"
+          }
+      },
+      "users": {
+          "type": "array",
+          "items": {
+              "type": "string",
+              "x-constraint": {
+                  "length": 16
+              },
+              "x-format": {
+                  "alphanum": true
+              }
+          }
+      },
+      "Model 2": {
+          "type": "object",
+          "properties": {
+              "description": {
+                  "type": "string"
+              },
+              "date": {
+                  "type": "string",
+                  "format": "date"
+              },
+              "value": {
+                  "$ref": "#/definitions/value",
+                  "type": "array"
+              },
+              "email": {
+                  "type": "boolean"
+              },
+              "users": {
+                  "$ref": "#/definitions/users",
+                  "type": "array"
+              },
+              "memberId": {
+                  "type": "string",
+                  "x-constraint": {
+                      "length": 16
+                  },
+                  "x-format": {
+                      "alphanum": true
+                  }
+              }
+          },
+          "required": [
+              "description",
+              "date",
+              "memberId"
+          ]
+      },
+      "resume": {
+          "type": "object",
+          "properties": {
+              "path": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "/[a-zA-Z]/"
+              },
+              "key": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "/[a-zA-Z]/"
+              }
+          },
+          "required": [
+              "path",
+              "key"
+          ]
+      },
+      "Model 3": {
+          "type": "object",
+          "properties": {
+              "firstname": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 40
+              },
+              "lastname": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 40
+              },
+              "email": {
+                  "type": "string"
+              },
+              "phone": {
+                  "type": "string"
+              },
+              "type": {
+                  "type": "string",
+                  "enum": [
+                      "json",
+                      "document",
+                      "file"
+                  ]
+              },
+              "resume": {
+                  "$ref": "#/definitions/resume",
+                  "required": [
+                      "resume",
+                      "resume"
+                  ],
+                  "x-alternatives": [
+                      {
+                          "$ref": "#/x-alt-definitions/resume"
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/Model 1"
+                      },
+                      {
+                          "type": "string"
+                      }
+                  ]
+              },
+              "comment": {
+                  "type": "string"
+              },
+              "note": {
+                  "type": "string"
+              },
+              "picture": {
+                  "type": "string"
+              },
+              "urls": {
+                  "type": "string"
+              },
+              "date": {
+                  "type": "string",
+                  "format": "date"
+              },
+              "status": {
+                  "type": "integer",
+                  "enum": [
+                      0,
+                      1
+                  ]
+              },
+              "column_id": {
+                  "type": "integer"
+              },
+              "offerer_id": {
+                  "type": "string"
+              },
+              "source_id": {
+                  "type": "string"
+              },
+              "user_id": {
+                  "type": "string",
+                  "x-constraint": {
+                      "length": 16
+                  },
+                  "x-format": {
+                      "alphanum": true
+                  }
+              },
+              "import": {
+                  "type": "boolean"
+              },
+              "external_id": {
+                  "type": "string"
+              },
+              "disable_mail": {
+                  "type": "boolean"
+              },
+              "answers": {
+                  "$ref": "#/definitions/value",
+                  "type": "array"
+              },
+              "traits": {
+                  "$ref": "#/definitions/value",
+                  "type": "array"
+              },
+              "token": {
+                  "type": "string"
+              }
+          },
+          "required": [
+              "firstname",
+              "lastname"
+          ]
+      },
+      "Model 4": {
+          "type": "object",
+          "properties": {
+              "firstname": {
+                  "type": "string"
+              },
+              "lastname": {
+                  "type": "string"
+              },
+              "resume": {
+                  "type": "string"
+              },
+              "type": {
+                  "type": "string",
+                  "enum": [
+                      "json",
+                      "document",
+                      "file"
+                  ]
+              },
+              "column_id": {
+                  "type": "integer"
+              },
+              "user_id": {
+                  "type": "string",
+                  "x-constraint": {
+                      "length": 16
+                  },
+                  "x-format": {
+                      "alphanum": true
+                  }
+              },
+              "import": {
+                  "type": "boolean"
+              },
+              "disable_mail": {
+                  "type": "boolean"
+              }
+          },
+          "required": [
+              "resume"
+          ]
+      },
+      "Model 5": {
+          "type": "object",
+          "properties": {
+              "operation": {
+                  "type": "string",
+                  "default": "search",
+                  "enum": [
+                      "check",
+                      "list",
+                      "search",
+                      "mail",
+                      "mail_sms",
+                      "sms",
+                      "archive",
+                      "transfer",
+                      "duplicate",
+                      "task",
+                      "static",
+                      "rmstatic",
+                      "export",
+                      "stats",
+                      "bulkmp",
+                      "rmApplicantStatic"
+                  ]
+              },
+              "term": {
+                  "type": "string"
+              },
+              "firstname": {
+                  "type": "string",
+                  "x-alternatives": [
+                      {
+                          "type": "string"
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/firstname",
+                          "type": "array"
+                      }
+                  ]
+              },
+              "lastname": {
+                  "type": "string",
+                  "x-alternatives": [
+                      {
+                          "type": "string"
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/firstname",
+                          "type": "array"
+                      }
+                  ]
+              },
+              "email": {
+                  "type": "string",
+                  "minLength": 5,
+                  "maxLength": 255,
+                  "x-format": {
+                      "email": true
+                  },
+                  "x-alternatives": [
+                      {
+                          "type": "string",
+                          "minLength": 5,
+                          "maxLength": 255,
+                          "x-format": {
+                              "email": true
+                          }
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/email",
+                          "type": "array"
+                      }
+                  ]
+              },
+              "phone": {
+                  "type": "string",
+                  "x-alternatives": [
+                      {
+                          "type": "string"
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/firstname",
+                          "type": "array"
+                      }
+                  ]
+              },
+              "applicant": {
+                  "type": "string",
+                  "x-constraint": {
+                      "length": 16
+                  },
+                  "x-format": {
+                      "alphanum": true
+                  },
+                  "x-alternatives": [
+                      {
+                          "type": "string",
+                          "x-constraint": {
+                              "length": 16
+                          },
+                          "x-format": {
+                              "alphanum": true
+                          }
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/applicant",
+                          "type": "array"
+                      }
+                  ]
+              },
+              "company": {
+                  "type": "number",
+                  "x-alternatives": [
+                      {
+                          "type": "number"
+                      },
+                      {
+                          "type": "string",
+                          "x-constraint": {
+                              "length": 16
+                          },
+                          "x-format": {
+                              "alphanum": true
+                          }
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/company",
+                          "type": "array"
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/applicant",
+                          "type": "array"
+                      }
+                  ]
+              },
+              "vacancy": {
+                  "type": "string",
+                  "x-constraint": {
+                      "length": 16
+                  },
+                  "x-format": {
+                      "alphanum": true
+                  },
+                  "x-alternatives": [
+                      {
+                          "type": "string",
+                          "x-constraint": {
+                              "length": 16
+                          },
+                          "x-format": {
+                              "alphanum": true
+                          }
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/applicant",
+                          "type": "array"
+                      }
+                  ]
+              },
+              "vacancy_id": {
+                  "type": "number",
+                  "x-alternatives": [
+                      {
+                          "type": "number"
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/company",
+                          "type": "array"
+                      }
+                  ]
+              },
+              "column": {
+                  "type": "string",
+                  "x-alternatives": [
+                      {
+                          "type": "string"
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/firstname",
+                          "type": "array"
+                      }
+                  ]
+              },
+              "column_id": {
+                  "type": "number",
+                  "x-alternatives": [
+                      {
+                          "type": "number"
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/company",
+                          "type": "array"
+                      }
+                  ]
+              },
+              "status": {
+                  "type": "number",
+                  "x-alternatives": [
+                      {
+                          "type": "number"
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/company",
+                          "type": "array"
+                      }
+                  ]
+              },
+              "offerer": {
+                  "type": "string",
+                  "x-alternatives": [
+                      {
+                          "type": "string"
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/firstname",
+                          "type": "array"
+                      }
+                  ]
+              },
+              "offerer_id": {
+                  "type": "string",
+                  "x-constraint": {
+                      "length": 16
+                  },
+                  "x-format": {
+                      "alphanum": true
+                  },
+                  "x-alternatives": [
+                      {
+                          "type": "string",
+                          "x-constraint": {
+                              "length": 16
+                          },
+                          "x-format": {
+                              "alphanum": true
+                          }
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/applicant",
+                          "type": "array"
+                      }
+                  ]
+              },
+              "tag": {
+                  "type": "string",
+                  "x-alternatives": [
+                      {
+                          "type": "string"
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/firstname",
+                          "type": "array"
+                      }
+                  ]
+              },
+              "url": {
+                  "type": "string",
+                  "x-alternatives": [
+                      {
+                          "type": "string"
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/firstname",
+                          "type": "array"
+                      }
+                  ]
+              },
+              "list": {
+                  "type": "string",
+                  "x-alternatives": [
+                      {
+                          "type": "string"
+                      },
+                      {
+                          "$ref": "#/x-alt-definitions/firstname",
+                          "type": "array"
+                      }
+                  ]
+              },
+              "inverse": {
+                  "type": "string"
+              },
+              "marketplaces": {
+                  "$ref": "#/definitions/value",
+                  "type": "array"
+              },
+              "score_min": {
+                  "type": "number"
+              },
+              "score_max": {
+                  "type": "number"
+              },
+              "start": {
+                  "type": "string"
+              },
+              "end": {
+                  "type": "string"
+              },
+              "hired": {
+                  "type": "boolean"
+              },
+              "p": {
+                  "type": "number"
+              },
+              "limit": {
+                  "type": "number",
+                  "maximum": 1000
+              },
+              "activeVacancies": {
+                  "type": "boolean"
+              },
+              "data": {
+                  "type": "string"
+              },
+              "token": {
+                  "type": "string"
+              },
+              "exportViewObject": {
+                  "$ref": "#/definitions/question"
+              }
+          }
+      },
+      "Model 6": {
+          "type": "object",
+          "properties": {
+              "description": {
+                  "type": "string"
+              },
+              "date": {
+                  "type": "string",
+                  "format": "date"
+              },
+              "value": {
+                  "$ref": "#/definitions/value",
+                  "type": "array"
+              },
+              "email": {
+                  "type": "boolean"
+              },
+              "memberId": {
+                  "type": "string",
+                  "x-constraint": {
+                      "length": 16
+                  },
+                  "x-format": {
+                      "alphanum": true
+                  }
+              }
+          },
+          "required": [
+              "description",
+              "date",
+              "memberId"
+          ]
+      },
+      "Model 7": {
+          "type": "object",
+          "properties": {
+              "tag": {
+                  "type": "string",
+                  "x-constraint": {
+                      "length": 16
+                  },
+                  "x-format": {
+                      "alphanum": true
+                  }
+              },
+              "value": {
+                  "type": "string"
+              }
+          },
+          "required": [
+              "tag"
+          ]
+      },
+      "Model 8": {
+          "type": "object",
+          "properties": {
+              "text": {
+                  "type": "string"
+              },
+              "files": {
+                  "type": "string"
+              },
+              "mentions": {
+                  "type": "string"
+              },
+              "private": {
+                  "type": "boolean"
+              },
+              "reply_to": {
+                  "type": "integer"
+              }
+          },
+          "required": [
+              "text"
+          ]
+      },
+      "Model 9": {
+          "type": "object",
+          "properties": {
+              "type": {
+                  "type": "string",
+                  "enum": [
+                      "json",
+                      "document",
+                      "file"
+                  ]
+              },
+              "resume": {
+                  "type": "string"
+              }
+          }
+      },
+      "Model 10": {
+          "type": "object",
+          "properties": {
+              "files": {
+                  "type": "string"
+              }
+          }
+      },
+      "Model 11": {
+          "type": "object",
+          "properties": {
+              "text": {
+                  "type": "string"
+              },
+              "creator": {
+                  "type": "string",
+                  "x-format": {
+                      "email": true
+                  }
+              }
+          },
+          "required": [
+              "text",
+              "creator"
+          ]
+      },
+      "Model 12": {
+          "type": "object",
+          "properties": {
+              "text": {
+                  "type": "string"
+              },
+              "private": {
+                  "type": "boolean"
+              },
+              "reply_to": {
+                  "type": "integer"
+              }
+          },
+          "required": [
+              "text"
+          ]
+      },
+      "Model 13": {
+          "type": "object",
+          "properties": {
+              "eventId": {
+                  "type": "string"
+              }
+          },
+          "required": [
+              "eventId"
+          ]
+      },
+      "Model 14": {
+          "type": "object",
+          "properties": {
+              "user": {
+                  "type": "string"
+              }
+          }
+      },
+      "Model 15": {
+          "type": "object",
+          "properties": {
+              "done": {
+                  "type": "boolean"
+              },
+              "description": {
+                  "type": "string"
+              },
+              "date": {
+                  "type": "string",
+                  "format": "date"
+              },
+              "email": {
+                  "type": "boolean"
+              }
+          },
+          "required": [
+              "done"
+          ]
+      },
+      "Model 16": {
+          "type": "object",
+          "properties": {
+              "vacancy_id": {
+                  "type": "string",
+                  "x-constraint": {
+                      "length": 16
+                  },
+                  "x-format": {
+                      "alphanum": true
+                  }
+              },
+              "column_id": {
+                  "type": "integer"
+              },
+              "score": {
+                  "type": "integer"
+              },
+              "status": {
+                  "type": "integer",
+                  "enum": [
+                      1
+                  ]
+              },
+              "external_id": {
+                  "type": "string",
+                  "minLength": 2
+              },
+              "user_id": {
+                  "type": "integer"
+              },
+              "reason": {
+                  "type": "string",
+                  "x-constraint": {
+                      "length": 16
+                  },
+                  "x-format": {
+                      "alphanum": true
+                  }
+              },
+              "duplicate": {
+                  "type": "number"
+              }
+          }
+      }
+  },
+  "x-alt-definitions": {
+      "resume": {
+          "type": "object",
+          "properties": {
+              "path": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "/[a-zA-Z]/"
+              },
+              "key": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "/[a-zA-Z]/"
+              }
+          },
+          "required": [
+              "path",
+              "key"
+          ]
+      },
+      "Model 1": {
+          "type": "object"
+      },
+      "firstname": {
+          "type": "array",
+          "items": {
+              "type": "string"
+          }
+      },
+      "email": {
+          "type": "array",
+          "items": {
+              "type": "string",
+              "minLength": 5,
+              "maxLength": 255,
+              "x-format": {
+                  "email": true
+              }
+          }
+      },
+      "applicant": {
+          "type": "array",
+          "items": {
+              "type": "string",
+              "x-constraint": {
+                  "length": 16
+              },
+              "x-format": {
+                  "alphanum": true
+              }
+          }
+      },
+      "company": {
+          "type": "array",
+          "items": {
+              "type": "number"
+          }
+      }
+  }
+}
