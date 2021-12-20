@@ -38,12 +38,7 @@ const config = {
         },
       }),
 
-      'redocusaurus',
-      {
-        specs: [{
-          spec: 'specs_api/specs_api.json',
-        }],
-      }
+      
     ],
    
   ],
