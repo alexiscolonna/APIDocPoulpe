@@ -36,10 +36,6 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-        specs: [{
-          routePath: '/api/',
-          specUrl: 'https://redocly.github.io/redoc/openapi.yaml',
-        }],
       }),     
     ],
 
@@ -130,4 +126,21 @@ const config = {
     }),
 };
 
-module.exports = config;
+module.exports ={
+
+  config,
+
+  presets: [
+    [
+      'redocusaurus',
+      {
+        specs: [
+          {
+            specUrl: 'https://redocly.github.io/redoc/openapi.yaml',
+          },
+        ],
+      },
+    ],
+  ],
+
+};
