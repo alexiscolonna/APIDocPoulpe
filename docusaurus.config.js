@@ -126,21 +126,4 @@ const config = {
     }),
 };
 
-module.exports ={
-
-  config,
-
-  presets: [
-    [
-      'redocusaurus',
-      {
-        specs: [
-          {
-            specUrl: 'https://redocly.github.io/redoc/openapi.yaml',
-          },
-        ],
-      },
-    ],
-  ],
-
-};
+module.exports = config;
