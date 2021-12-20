@@ -37,8 +37,7 @@ const config = {
           customCss: require.resolve('./src/css/custom.css'),
         },
       }),
-    ],
-    [
+
       'redocusaurus',
       {
         specs: [{
@@ -46,6 +45,7 @@ const config = {
         }],
       }
     ],
+   
   ],
 
   themeConfig:
