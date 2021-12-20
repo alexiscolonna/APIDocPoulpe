@@ -73,7 +73,7 @@ const config = {
                 to: '/docs/getting_started',
               },
               {to: '/Webhooks', label: 'Webhooks'},
-              {to: '/Iframe', label: 'Iframe'},
+              {to: '/sites-carrieres', label: 'Sites Carrières'},
             ],
           },
           {
