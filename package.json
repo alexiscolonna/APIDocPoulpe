@@ -22,7 +22,9 @@
     "clsx": "^1.1.1",
     "prism-react-renderer": "^1.2.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "redoc": "*",
+    "redocusaurus": "^0.5.0"
   },
   "browserslist": {
     "production": [
