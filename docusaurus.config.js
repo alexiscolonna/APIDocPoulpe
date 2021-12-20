@@ -4,6 +4,48 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+//Config pour redoc
+const redocusaurus = [
+  'redocusaurus',
+  {
+    debug: Boolean(process.env.DEBUG || process.env.CI),
+    specs: [
+      {
+        id: 'using-spec-url',
+        specUrl: 'https://redocly.github.io/redoc/openapi.yaml',
+        routePath: '/examples/using-spec-url/',
+      },
+      {
+        id: 'using-relative-url',
+        specUrl: `${process.env.DEPLOY_BASE_URL || '/'}openapi-page.yaml`,
+        routePath: '/examples/using-relative-url/',
+      },
+      {
+        id: 'using-spec-yaml',
+        spec: 'openapi.yaml',
+        /**
+         * This becomes the Download URL in this case, while docs are generated from `spec`
+         */
+        specUrl: `${process.env.DEPLOY_BASE_URL || '/'}openapi-page.yaml`,
+        routePath: '/examples/using-spec-yaml/',
+      },
+    ],
+    theme: {
+      /**
+       * Highlight color for docs
+       */
+      primaryColor: '#1890ff',
+      /**
+       * Options to pass to redoc
+       * @see https://github.com/redocly/redoc#redoc-options-object
+       */
+      redocOptions: { hideDownloadButton: false, disableSearch: true },
+    },
+  },
+];
+
+// Fin de config redoc
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Flatchr Docs',
@@ -19,6 +61,7 @@ const config = {
 
   presets: [
     [
+      redocusaurus,
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
