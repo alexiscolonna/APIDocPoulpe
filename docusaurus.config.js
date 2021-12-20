@@ -40,17 +40,7 @@ const config = {
       }),
         
       
-    ],
-
-    [
-      'redocusaurus',
-      {
-        specs: [{
-          specUrl: 'https://redocly.github.io/redoc/openapi.yaml',
-        }],
-      }
-    ],
-   
+    ],   
   ],
 
   themeConfig:
