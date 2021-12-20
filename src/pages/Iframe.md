@@ -1,4 +1,4 @@
-# Intégration d'un iframe
+ # Intégration d'un iframe
 
 Le site [flatchr.io](https://www.flatchr.io/) permet l’intégration des annonces du client sur son site internet ou intranet sans nécessité de connaissance informatique et par simple copier-coller, grâce à l'utilisation d'un iframe.
 
