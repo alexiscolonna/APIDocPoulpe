@@ -58,7 +58,7 @@ const config = {
             label: 'API Reference',
           },
           {to: '/Webhooks', label: 'Webhooks', position: 'left'},
-          {to: '/Iframe', label: 'Iframe', position: 'left'},
+          {to: '/sites-carrieres', label: 'Sites Carrières', position: 'left'},
           
         ],
       },
