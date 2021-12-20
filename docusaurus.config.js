@@ -38,6 +38,14 @@ const config = {
         },
       }),
 
+      'redocusaurus',
+     {
+       specs: [{
+         routePath: '/api/',
+         specUrl: 'https://redocly.github.io/redoc/openapi.yaml',
+       }],
+     }
+
       
     ],
    
